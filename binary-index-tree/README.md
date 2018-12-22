@@ -20,7 +20,7 @@ Given an array of numbers the program must be able to query a sum of a range of 
 	
 	Find the sum between the range of indices, both inclusive
 
-# How it works:
+## How it works:
 
 A Binary Indexed Tree stores the sum of **ranges** of values in the given array. See the screenshot below:
 

@@ -26,8 +26,8 @@ class BinaryIndexTree():
 
     def sum_range(self, from_idx, to_idx):
         """Sum between ranges, both inclusive"""
-        to_sum = sum_to_index(to_idx)
-        from_sum = sum_to_index(from_sum - 1)
+        to_sum = self.sum_to_index(to_idx)
+        from_sum = self.sum_to_index(from_idx - 1)
 
         return to_sum - from_sum
 

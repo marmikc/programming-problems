@@ -5,9 +5,9 @@ import NaiveSolution
 import random
 import sys
 
-array_size = 3
-max_elem = 10
-test_iterations = 2
+ARRAY_SIZE = 3
+MAX_ELEMENT_VALUE = 10
+TEST_ITERATIONS = 2
 verbose = True
 
 
@@ -21,12 +21,12 @@ def main():
             global verbose
             verbose = False
 
-    for i in range(0, test_iterations):
+    for i in range(0, TEST_ITERATIONS):
         run_test()
 
 
 def test_sum(BIT, naive):
-    sum_idx = random.randint(0, array_size - 1)
+    sum_idx = random.randint(0, ARRAY_SIZE - 1)
     function_call = "Function call: Sum from index 0 to index " + str(sum_idx)
 
     naive_add = naive.sum_to_index(sum_idx)
@@ -37,8 +37,8 @@ def test_sum(BIT, naive):
 
 
 def test_update(BIT, naive):
-    update_idx = random.randint(0, array_size - 1)
-    update_value = random.randint(-max_elem, max_elem)
+    update_idx = random.randint(0, ARRAY_SIZE - 1)
+    update_value = random.randint(-MAX_ELEMENT_VALUE, MAX_ELEMENT_VALUE)
     function_call = "Function call: update index " + \
         str(update_idx) + " by adding " + str(update_value)
 
@@ -74,8 +74,8 @@ def evaluate(label1, value1, label2, value2, function_call):
 
 def run_test():
     array = []
-    for j in range(0, array_size):
-        array.append(random.randint(1, max_elem))
+    for j in range(0, ARRAY_SIZE):
+        array.append(random.randint(1, MAX_ELEMENT_VALUE))
     print("Array: ", array)
 
     BIT = BinaryIndexTree.BinaryIndexTree(array)

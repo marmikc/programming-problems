@@ -5,7 +5,7 @@ import NaiveSolution
 import random
 import sys
 
-array_size = 4
+array_size = 3
 max_elem = 10
 test_iterations = 2
 verbose = True

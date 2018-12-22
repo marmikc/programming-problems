@@ -20,13 +20,13 @@ Sum-Range:
 
 A Binary Indexed Tree stores the sum of **ranges** of values in the given array. See the screenshot below:
 
-![Array as sum of ranges](./images/BinaryRangesExample.PNG)
+![Array as sum of ranges](images/BinaryRangesExample.PNG)
 
 Likewise, when finding the addition up to an index, the relevant ranges are added together, as seen in the above screenshot.
 
 Traversal between the correct squares is done by modifying the last "set bit" in the index. See the screenshot below.
 
-![Modifying the last set bit of a number](./images/ModifyingLastSetBitScreenshot.PNG)
+![Modifying the last set bit of a number](images/ModifyingLastSetBitScreenshot.PNG)
 
 Going backwards to sum the ranges is done by taking away by the value of the last set bit, and going forwards to update new values of the table is done by adding the last set bit.
 
@@ -39,3 +39,7 @@ Going forwards (down the array)
 ```
 	index += (index & -index)
 ```
+
+Going forwards is done when updating ranges when the value of a given index in the array has changed.
+
+![Updating ranges for a change in value](./images/UpdateValueExampleScreenshot.PNG)

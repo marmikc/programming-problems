@@ -14,12 +14,12 @@ class NaiveSolution():
 
         return total_sum
 
-    def sum_range(from_idx, to_idx):
+    def sum_range(self, from_idx, to_idx):
         total_sum = 0
         for i in range(from_idx, to_idx + 1):
             total_sum += self.array[i]
 
         return total_sum
 
-    def update(self, index, value):
-        self.array[index] = value
+    def update_value(self, index, value):
+        self.array[index] += value

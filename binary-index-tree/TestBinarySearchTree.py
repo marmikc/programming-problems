@@ -25,6 +25,27 @@ def main():
         run_test()
 
 
+def run_test():
+    array = []
+    for j in range(0, ARRAY_SIZE):
+        array.append(random.randint(1, MAX_ELEMENT_VALUE))
+    print("Array: ", array)
+
+    BIT = BinaryIndexTree.BinaryIndexTree(array)
+    naive = NaiveSolution.NaiveSolution(array)
+
+    sum1_result = test_sum(BIT, naive)
+    update_result = test_update(BIT, naive)
+    sum2_result = test_sum(BIT, naive)
+
+    all_tests_passed = sum1_result & sum2_result & update_result
+    if all_tests_passed:
+        print("Passed all tests this round")
+
+    print('\n')
+    return
+
+
 def test_sum(BIT, naive):
     sum_idx = random.randint(0, ARRAY_SIZE - 1)
     function_call = "Function call: Sum from index 0 to index " + str(sum_idx)
@@ -70,27 +91,6 @@ def evaluate(label1, value1, label2, value2, function_call):
 
     print(output)
     return result
-
-
-def run_test():
-    array = []
-    for j in range(0, ARRAY_SIZE):
-        array.append(random.randint(1, MAX_ELEMENT_VALUE))
-    print("Array: ", array)
-
-    BIT = BinaryIndexTree.BinaryIndexTree(array)
-    naive = NaiveSolution.NaiveSolution(array)
-
-    sum1_result = test_sum(BIT, naive)
-    update_result = test_update(BIT, naive)
-    sum2_result = test_sum(BIT, naive)
-
-    all_tests_passed = sum1_result & sum2_result & update_result
-    if all_tests_passed:
-        print("Passed all tests this round")
-
-    print('\n')
-    return
 
 
 if __name__ == "__main__":

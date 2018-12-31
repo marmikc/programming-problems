@@ -1,5 +1,21 @@
 """My solution to the Longest Path Problem as defined in the README."""
-import util
+
+
+class Queue:
+    """Stores nodes to traverse"""
+
+    def __init__(self):
+        self.queue = []
+
+    def push(self, item):
+        """Push item into the front of the queue"""
+        self.queue.insert(0, item)
+
+    def pop(self):
+        return self.queue.pop()
+
+    def is_empty(self):
+        return len(self.queue) == 0
 
 
 class LongestPath():
@@ -10,13 +26,14 @@ class LongestPath():
         # Coordinates of visited cells to path length to maxima
         self.cells = {}
         self.grid = grid
-        self.longest_path
+        self.longest_path = 0
+        self.find_longest_path()
 
     def find_longest_path(self):
         """Finds the longest path of increasing integers"""
-        for row_num in len(self.grid):
-            for col_num in len(self.grid[0]):
-                if cell in self.cells:
+        for row_num in range(0, len(self.grid)):
+            for col_num in range(0, len(self.grid[0])):
+                if (row_num, col_num) in self.cells:
                     continue
 
                 maxima = self.find_local_max(row_num, col_num)
@@ -25,49 +42,53 @@ class LongestPath():
         return self.longest_path
 
     def iterate_to_minima(self, maxima_list):
-        queue = util.Queue()
+        """Iterate to all minima from the list of maxima"""
+        queue = Queue()
         for maxima in maxima_list:
             count = 0
-            queue.push(maxima)
+            queue.push((maxima[0], maxima[1], 0))
 
-            while not queue.isEmpty():
-                coord = queue.pop()
+            while not queue.is_empty():
+                top_element = queue.pop()
+                count = top_element[2]
+                coord = (top_element[0], top_element[1])
 
                 current_value = self.grid[coord[0]][coord[1]]
 
-                if coord in cells and cells[coord] >= count:
-                    break
+                if coord in self.cells and self.cells[coord] >= count:
+                    continue
                 else:
-                    cells[coord] = count
+                    self.cells[coord] = count
 
-                    if cells[coord] > self.longest_path:
-                        self.longest_path = cells[coord]
-
-                if coord[0] - 1 >= 0:
-                    if self.grid[coord[0] - 1][coord[1]] < current_value:
-                        queue.push((coord[0] - 1, coord[1]))
-
-                if coord[0] + 1 < len(self.grid):
-                    if self.grid[coord[0] + 1][coord[1]] < current_value:
-                        queue.push((coord[0] + 1, coord[1]))
-
-                if coord[1] - 1 >= 0:
-                    if self.grid[coord[0]][coord[1] - 1] < current_value:
-                        queue.push((coord[0], coord[1] - 1))
-
-                if coord[1] + 1 < len(self.grid[0]):
-                    if self.grid[coord[0]][coord[1] + 1] < current_value:
-                        queue.push((coord[0], coord[1] + 1))
+                    if self.cells[coord] > self.longest_path:
+                        self.longest_path = self.cells[coord]
 
                 count += 1
 
+                if coord[0] - 1 >= 0:
+                    if self.grid[coord[0] - 1][coord[1]] < current_value:
+                        queue.push((coord[0] - 1, coord[1], count))
+
+                if coord[0] + 1 < len(self.grid):
+                    if self.grid[coord[0] + 1][coord[1]] < current_value:
+                        queue.push((coord[0] + 1, coord[1], count))
+
+                if coord[1] - 1 >= 0:
+                    if self.grid[coord[0]][coord[1] - 1] < current_value:
+                        queue.push((coord[0], coord[1] - 1, count))
+
+                if coord[1] + 1 < len(self.grid[0]):
+                    if self.grid[coord[0]][coord[1] + 1] < current_value:
+                        queue.push((coord[0], coord[1] + 1, count))
+
     def find_local_max(self, row_num, col_num):
+        """Iterate to all maxima from the given cell"""
         maxima_list = []
 
-        queue = util.Queue()
+        queue = Queue()
         queue.push((row_num, col_num))
 
-        while not queue.isEmpty():
+        while not queue.is_empty():
             coord = queue.pop()
             current_value = self.grid[coord[0]][coord[1]]
             is_max = 0

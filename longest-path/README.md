@@ -26,3 +26,5 @@ So, if one were to pick any cell and then iterate to (by following increasing ad
 The path cost of a maxima to itself is 0, from an adjacent cell (that is strictly lower) is 1, and so on until the minima. This information can be put in a dictionary to record the length of a path to its furthest maxima. 
 
 When iterating to the minima, if a cell has already been visited, and if the path from the current maxima is bigger than the size in the dictionary, then that cell should be overwritten along with all the others all the way to the minima.
+
+This way, as all the paths from the maxima to the minima are explored, the longest will be stored.

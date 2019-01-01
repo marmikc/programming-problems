@@ -28,3 +28,60 @@ The path cost of a maxima to itself is 0, from an adjacent cell (that is strictl
 When iterating to the minima, if a cell has already been visited, and if the path from the current maxima is bigger than the size in the dictionary, then that cell should be overwritten along with all the others all the way to the minima.
 
 This way, as all the paths from the maxima to the minima are explored, the longest will be stored.
+
+## Pseudocode
+
+```
+find_longest_path()
+	longest_path = 0
+	for all rows
+		for all columns
+			if current_cell has been visited:
+				continue
+
+			list_of_maxima = find_all_maxima(current_cell)
+			longeste_path = iterate_to_minima(list_of_maxima, longest_path)
+
+	return longest_path
+
+find_all_maxima(current_cell)
+	"""Breadth first search to all maxima"""
+	create queue
+	queue.push(current_cell)
+
+	list_of_maxima = []
+
+	while queue is not empty:
+		current_cell = queue.front()
+
+		push adjacent cells with greater value onto queue
+
+		if nothing is pushed to queue:
+			# This is a maxima
+			list_of_maxima.append(current_cell)
+
+	return list_of_maxima
+
+iterate_to_minima(list_of_maxima)
+	"""Breadth first search to all minima"""
+
+	for all maxima in list_of_maxima:
+		create queue
+		queue.push(maxima, 0) # 0 represents distance to maxima
+
+		while queue is not empty:
+			current_cell, distance_to_maxima = queue.front()
+
+			if current_cell has been visited and distance to maxima is greater than current distance_to_maxima:
+				continue
+			else:
+				mark cell as visited and store distance_to_maxima
+
+				if distance_to_maxima > longest_path:
+					longest_path = distance_to_maxima
+
+			distance_to_maxima++
+
+			push all adjacent cells to queue with distance_to_maxima
+
+```

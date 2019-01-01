@@ -31,6 +31,8 @@ This way, as all the paths from the maxima to the minima are explored, the longe
 
 ## Pseudocode
 
+*Needs cleanup*
+
 ```
 find_longest_path()
 	longest_path = 0

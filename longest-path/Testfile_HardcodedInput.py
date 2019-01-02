@@ -66,4 +66,4 @@ test7 = [
 grid = test3
 for row in grid:
     print(row)
-print(LongestPath.LongestPath(grid).longest_path)
+print(LongestPath.find_longest_path(grid))

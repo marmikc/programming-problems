@@ -1,4 +1,4 @@
-import LongestPath as lp
+import LongestPath
 import random
 
 MAX_INT_SIZE = 9
@@ -17,4 +17,4 @@ for row in range(0, NUM_ROWS):
     grid.append(row)
     print(row)
 
-print(lp.LongestPath(grid).longest_path)
+print(LongestPath.find_longest_path(grid))

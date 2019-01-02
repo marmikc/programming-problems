@@ -1,7 +1,7 @@
 """Binary Index Tree Class."""
 
 
-class BinaryIndexTree():
+class BinaryIndexTree:
     """Implementing Binary Index Tree"""
 
     def __init__(self, array):

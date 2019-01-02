@@ -21,7 +21,12 @@ class WeightedShuffler:
 
         sample_list = []
         for i in range(0, num_samples):
-            rand = random.randint(0, weight_sum)
+            rand = -1
+            if weight_sum != 1:
+                rand = random.randint(1, weight_sum)
+            else:
+                rand = 1
+
             sample_sum = 0
             for j in range(len(item_list)):
                 sample_sum += item_list[j][1]
@@ -29,7 +34,7 @@ class WeightedShuffler:
                 if rand <= sample_sum:
                     sample_list.append(item_list[j])
                     weight_sum -= item_list[j][1]
-                    item_list[j][1] = 0
+                    item_list[j] = (item_list[j][0], 0)
                     break
 
         return sample_list

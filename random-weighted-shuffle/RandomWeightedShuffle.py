@@ -19,6 +19,7 @@ class _BinaryTree:
         self.all_items = all_items
         self.num_items = len(all_items)
         self.tree = [None for _ in range(0, self.num_items)]
+        self.construct_tree()
 
     def left_index(self, index):
         return (2 * index) + 1
@@ -31,15 +32,16 @@ class _BinaryTree:
             item = self.all_items[index][0]
             weight = self.all_items[index][1]
             right_weight = self.construct_tree(self.right_index(index))
-            left_index = self.construct_tree(self.left_index(index))
+            left_weight = self.construct_tree(self.left_index(index))
 
             self.tree[index] = _Node(weight, item, right_weight, left_weight)
             return weight + right_weight + left_weight
         else:
             return 0
 
-    def sample_tree(value, index=0):
+    def sample_tree(self, value, index=0):
         node_weight = 0
+
         if self.tree[index].sampled:
             node_weight = 0
         else:
@@ -48,20 +50,25 @@ class _BinaryTree:
         right_weight = self.tree[index].right_weight
         left_weight = self.tree[index].left_weight
 
-        sampled_node = -1
+        sampled_item = -1
         sampled_weight = -1
-        if value < node_weight + left_weight and value > left_weight:
-            sampled_node = index
-            sampled_weight = self.tree[sampled_node].weight
-        elif value < node_weight + left_weight:
-            sampled_node, sampled_weight = self.sample_tree(
-                self.left_index(value, index))
+        if value <= node_weight + left_weight and value > left_weight and not self.tree[index].sampled:
+            sampled_item = self.tree[index].item
+            sampled_weight = self.tree[index].weight
+            self.tree[index].sampled = True
+
+        elif value <= left_weight:
+            sampled_item, sampled_weight = self.sample_tree(
+                value, self.left_index(index))
+            self.tree[index].left_weight -= sampled_weight
+
         else:
             new_value = value - (node_weight + left_weight)
-            sampled_node, sampled_weight = self.sample_tree(
-                self.right_index(new_value, index))
+            sampled_item, sampled_weight = self.sample_tree(
+                new_value, self.right_index(index))
+            self.tree[index].right_weight -= sampled_weight
 
-        return (sampled_node, sampled_weight)
+        return (sampled_item, sampled_weight)
 
     def reset_tree(self, index=0):
         """Mark all nodes as unsampled"""
@@ -80,7 +87,7 @@ class WeightedShuffler:
             self.total_weight += weight
             self.all_items.append((item, weight))
 
-        self.tree = _BinaryTree(all_items)
+        self.tree = _BinaryTree(self.all_items)
 
     def shuffle(self):
         return self.sample_items(len(self.all_items))
@@ -90,7 +97,11 @@ class WeightedShuffler:
         weight_sum = self.total_weight
         sampled_list = []
         for sample_num in range(0, num_samples):
-            rand = random.randint(1, weight_sum)
+            rand = -1
+            if weight_sum != 1:
+                rand = random.randint(1, weight_sum)
+            else:
+                rand = 1
 
             sampled_item = self.tree.sample_tree(rand)
             weight_sum -= sampled_item[1]

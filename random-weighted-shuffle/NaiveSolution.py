@@ -17,7 +17,7 @@ class WeightedShuffler:
     def sample_items(self, num_samples):
         """Return list of num_samples weighted samples"""
         weight_sum = self.total_weight
-        item_list = self.all_items
+        item_list = self.all_items.copy()
 
         sample_list = []
         for i in range(0, num_samples):

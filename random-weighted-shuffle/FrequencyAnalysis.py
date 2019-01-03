@@ -13,6 +13,8 @@ def main():
         ("Pea", 1),
     ]
 
+    print("Testcase: ", testcase1)
+
     naive = NS.WeightedShuffler(testcase1)
     # print(naive.shuffle())
 
@@ -28,7 +30,7 @@ def main():
 
 def perform_frequency_analysis(shuffler):
     list_permutation_counts = {}
-    for count in range(0, NUM_ITERATIONS + 1):
+    for count in range(0, NUM_ITERATIONS):
         shuffled = shuffler.shuffle()
 
         preceeding_items = []

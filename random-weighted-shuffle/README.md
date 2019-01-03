@@ -24,6 +24,8 @@ This would make the overall runtime of this algorithm O(nlog(n)).
 
 ## Testing this algorithm
 
+### Frequency Analysis
+
 Given that this is a randomized algorithm, analysing the correctness of the algorithm requires a frequency analysis. Wherein, given a list of items with weights, different items should appear with different probabilities, depending on where in the list they appear and what items preceeded them.
 
 For example, given the following testcase:
@@ -48,3 +50,26 @@ Pea:
 - Pea has the same probabilites as Grape.
 
 `FrequencyAnalysis.py` tests both algorithms over 100,000 iterations and returns how often each item appears in every scenario.
+
+### Time Analysis
+
+I tried my hand at timing the runtime of both solutions. `TimeAnalysis.py` generates a list with a specified number of elements, and then outputs the average time of both. The following is output from runs with different configurations.
+
+```
+$ python TimeAnalysis.py
+List size:  5000
+Number of Iterations:  5
+Binary Tree    | Average Time:  0.09740982055664063
+Naive Solution | Average Time:  1.9978332042694091
+
+```
+
+Cranking this up to a list with 100,000 items.
+
+```
+$ python TimeAnalysis.py
+List size:  100000
+Number of Iterations:  1
+Binary Tree    | Average Time:  3.1257734298706055
+Naive Solution | Average Time:  981.63298869133
+```

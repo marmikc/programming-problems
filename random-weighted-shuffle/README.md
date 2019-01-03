@@ -19,3 +19,30 @@ Given that an item with weight of 1 is chosen first
 Given there are several rounds of sampling, there needs to be at least n samples. For each sample we need to determine which item was chosen. 
 
 A way to do this would be to create a list of sums, where each item is the sum of all numbers before it. Then, generate a random number from 1 to the sum of all weights. Finally, via a binary search, find the interval the corresponds to the generated number and choose that item.
+
+This would make the overall runtime of this algorithm O(nlog(n)).
+
+## Testing this algorithm
+
+Given that this is a randomized algorithm, analysing the correctness of the algorithm requires a frequency analysis. Wherein, given a list of items with weights, different items should appear with different probabilities, depending on where in the list they appear and what items preceeded them.
+
+For example, given the following testcase:
+
+```python
+	testcase1 = [
+	        ("Apple", 2),
+	        ("Grape", 1),
+	        ("Pea", 1),
+	]
+```
+
+Apple should appear first 50% of the time.
+Given that either Grape or Pea was sampled first, Apple should appear second 66% of the time.
+
+Grape should appear first 25% of the time.
+Given that Apple was sampled first, Grape should appear second 50% of the time.
+Given that Pea was sampled first, Grape should appear second 33% of the time.
+
+Pea has the same probabilites as Grape.
+
+`FrequencyAnalysis.py` tests both algorithms over 100,000 iterations and returns how often each item appears in every scenario.

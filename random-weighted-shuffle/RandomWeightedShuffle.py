@@ -9,6 +9,8 @@ class _Node:
         self.item = item
         self.right_weight = right_weight
         self.left_weight = left_weight
+        self.original_right_weight = right_weight
+        self.original_left_weight = left_weight
         self.sampled = False
 
 
@@ -55,25 +57,32 @@ class _BinaryTree:
         if value <= node_weight + left_weight and value > left_weight and not self.tree[index].sampled:
             sampled_item = self.tree[index].item
             sampled_weight = self.tree[index].weight
-            self.tree[index].sampled = True
 
+            self.tree[index].sampled = True
         elif value <= left_weight:
             sampled_item, sampled_weight = self.sample_tree(
                 value, self.left_index(index))
-            self.tree[index].left_weight -= sampled_weight
 
+            # Adjust sum
+            self.tree[index].left_weight -= sampled_weight
         else:
             new_value = value - (node_weight + left_weight)
             sampled_item, sampled_weight = self.sample_tree(
                 new_value, self.right_index(index))
+
+            # Adjust sum
             self.tree[index].right_weight -= sampled_weight
 
         return (sampled_item, sampled_weight)
 
     def reset_tree(self, index=0):
-        """Mark all nodes as unsampled"""
+        """Mark all nodes as unsampled, and restore original values"""
         if index < self.num_items:
             self.tree[index].sampled = False
+            self.tree[index].right_weight = self.tree[
+                index].original_right_weight
+            self.tree[index].left_weight = self.tree[
+                index].original_left_weight
             self.reset_tree(self.right_index(index))
             self.reset_tree(self.left_index(index))
 

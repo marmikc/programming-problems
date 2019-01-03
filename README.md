@@ -11,3 +11,6 @@ I've never quite used linked lists in python, so I created a small exercise to d
 
 ## longest-path
 I received this problem as a question in a technical interview and floundered in my solution and my answer. I am tackling it here so as to  present my best solution.
+
+## random-weighted-shuffle
+This is a problem that has intruiged me for a while. Given a list of items with weights, how do you efficiently shuffle the list?

@@ -14,17 +14,19 @@ def main():
     generated_test_case = generate_random_list()
 
     # print(generated_test_case)
+    print("List size: ", LIST_SIZE)
+    print("Number of Iterations: ", NUM_ITERATIONS)
 
     naive = NS.WeightedShuffler(generated_test_case)
     rws = RWS.WeightedShuffler(generated_test_case)
 
-    average_naive_time = perform_timing_analysis(naive)
-
-    print("Naive Solution | Average Time: ", average_naive_time)
-
     average_rws_time = perform_timing_analysis(rws)
 
     print("Binary Tree    | Average Time: ", average_rws_time)
+
+    average_naive_time = perform_timing_analysis(naive)
+
+    print("Naive Solution | Average Time: ", average_naive_time)
 
 
 def perform_timing_analysis(shuffler):

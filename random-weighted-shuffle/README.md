@@ -36,13 +36,13 @@ For example, given the following testcase:
 	]
 ```
 
-Apple should appear first 50% of the time.
-Given that either Grape or Pea was sampled first, Apple should appear second 66% of the time.
+- Apple should appear first 50% of the time.
+- Given that either Grape or Pea was sampled first, Apple should appear second 66% of the time.
 
-Grape should appear first 25% of the time.
-Given that Apple was sampled first, Grape should appear second 50% of the time.
-Given that Pea was sampled first, Grape should appear second 33% of the time.
+- Grape should appear first 25% of the time.
+- Given that Apple was sampled first, Grape should appear second 50% of the time.
+- Given that Pea was sampled first, Grape should appear second 33% of the time.
 
-Pea has the same probabilites as Grape.
+- Pea has the same probabilites as Grape.
 
 `FrequencyAnalysis.py` tests both algorithms over 100,000 iterations and returns how often each item appears in every scenario.

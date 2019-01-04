@@ -7,7 +7,7 @@ For example, with the weights [2, 1], the item with a weight of 2 would be chose
 Example 2, given a list with weights: [2, 1, 1]
 
 Item with a weight of 2 is chosen 50% of the time.
-	Given that the item with weight of 2 is chosen first, the remaining two item have a 50/50 chance of being chosen
+	Given that the item with weight of 2 is chosen first, the two remaining items have a 50/50 chance of being chosen
 
 Given that an item with weight of 1 is chosen first
 	The item with a weight of 2 is then chosen second 66% of the time

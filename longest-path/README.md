@@ -42,7 +42,7 @@ find_longest_path()
 				continue
 
 			list_of_maxima = find_all_maxima(current_cell)
-			longeste_path = iterate_to_minima(list_of_maxima, longest_path)
+			longest_path = iterate_to_minima(list_of_maxima, longest_path)
 
 	return longest_path
 

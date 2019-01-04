@@ -16,56 +16,64 @@ I have written two test files for this LRU cache.
 
 ### Hardcoded Input
 
-The first runs the cache in verbose mode and tests against a MEMORY I wrote. It doesn't automatically determine whether the output of the cache is right, but it serves as a good way to understand what the cache is doing and how it is change between cache calls. The below shows some sample output:
+The first runs the cache in verbose mode and tests against a memory I wrote. It doesn't automatically determine whether the output of the cache is right, but it serves as a good way to understand what the cache is doing and how it is change between cache calls. Furthermore, it tests important edge cases that I wanted to go through manually and see how the implementation performs.
+
+The below shows some sample output:
 
 <details>
-	<summary>`TestLRU_Hardcoded.py` Output</summary>
-	```
-	$ python TestLRU_HardcodedInput.py
-	Command: get( Apple )
-	Cache miss on:  ('Apple', 2)
-	('Apple', 2) ->
+	<summary>
+		<p>
+			`TestLRU_Hardcoded.py` Output
+		</p>
+	</summary>
+	<p>
+		```
+		$ python TestLRU_HardcodedInput.py
+		Command: get( Apple )
+		Cache miss on:  ('Apple', 2)
+		('Apple', 2) ->
 
-	Command: get( Apple )
-	Cache hit on:  ('Apple', 2)
-	('Apple', 2) ->
+		Command: get( Apple )
+		Cache hit on:  ('Apple', 2)
+		('Apple', 2) ->
 
-	Command: get( Grape )
-	Cache miss on:  ('Grape', 5)
-	('Grape', 5) -> ('Apple', 2) ->
+		Command: get( Grape )
+		Cache miss on:  ('Grape', 5)
+		('Grape', 5) -> ('Apple', 2) ->
 
-	Command: get( Pea )
-	Cache miss on:  ('Pea', 1)
-	('Pea', 1) -> ('Grape', 5) -> ('Apple', 2) ->
+		Command: get( Pea )
+		Cache miss on:  ('Pea', 1)
+		('Pea', 1) -> ('Grape', 5) -> ('Apple', 2) ->
 
-	Command: get( Apple )
-	Cache hit on:  ('Apple', 2)
-	('Apple', 2) -> ('Pea', 1) -> ('Grape', 5) ->
+		Command: get( Apple )
+		Cache hit on:  ('Apple', 2)
+		('Apple', 2) -> ('Pea', 1) -> ('Grape', 5) ->
 
-	Command: get( Mango )
-	Cache miss on:  ('Mango', 6)
-	('Mango', 6) -> ('Apple', 2) -> ('Pea', 1) ->
+		Command: get( Mango )
+		Cache miss on:  ('Mango', 6)
+		('Mango', 6) -> ('Apple', 2) -> ('Pea', 1) ->
 
-	Command: get( Kiwi )
-	Cache miss on:  ('Kiwi', 4)
-	('Kiwi', 4) -> ('Mango', 6) -> ('Apple', 2) ->
+		Command: get( Kiwi )
+		Cache miss on:  ('Kiwi', 4)
+		('Kiwi', 4) -> ('Mango', 6) -> ('Apple', 2) ->
 
-	Command: get( Apple )
-	Cache hit on:  ('Apple', 2)
-	('Apple', 2) -> ('Kiwi', 4) -> ('Mango', 6) ->
+		Command: get( Apple )
+		Cache hit on:  ('Apple', 2)
+		('Apple', 2) -> ('Kiwi', 4) -> ('Mango', 6) ->
 
-	Command: get( Mango )
-	Cache hit on:  ('Mango', 6)
-	('Mango', 6) -> ('Apple', 2) -> ('Kiwi', 4) ->
+		Command: get( Mango )
+		Cache hit on:  ('Mango', 6)
+		('Mango', 6) -> ('Apple', 2) -> ('Kiwi', 4) ->
 
-	Command: get( Apple )
-	Cache hit on:  ('Apple', 2)
-	('Apple', 2) -> ('Mango', 6) -> ('Kiwi', 4) ->
+		Command: get( Apple )
+		Cache hit on:  ('Apple', 2)
+		('Apple', 2) -> ('Mango', 6) -> ('Kiwi', 4) ->
 
-	Command: get( Pea )
-	Cache miss on:  ('Pea', 1)
-	('Pea', 1) -> ('Apple', 2) -> ('Mango', 6) ->
-	```
+		Command: get( Pea )
+		Cache miss on:  ('Pea', 1)
+		('Pea', 1) -> ('Apple', 2) -> ('Mango', 6) ->
+		```
+	</p>
 </details>
 
 ### Randomized Input

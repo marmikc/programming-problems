@@ -47,7 +47,7 @@ def main():
         if VERBOSE == True or cache_state != correct_cache:
             print("Command: get(", random_key, ")")
             print("Correct State:  ", correct_cache)
-            print("Returned State: ", cache_state)
+            print("Returned State: ", cache_state, "\n")
 
     if not error:
         print("Passed all randomized tests!")

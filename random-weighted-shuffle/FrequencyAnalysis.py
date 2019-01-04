@@ -21,7 +21,7 @@ def main():
     rws = RWS.WeightedShuffler(testcase1)
     # print(rws.shuffle())
 
-    print("Performaing analysis on NAIVE SOLUTION")
+    print("Performing analysis on NAIVE SOLUTION")
     perform_frequency_analysis(naive)
 
     print("")

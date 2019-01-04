@@ -24,6 +24,8 @@ def main():
     print("Performaing analysis on NAIVE SOLUTION")
     perform_frequency_analysis(naive)
 
+    print("")
+
     print("Performing analysis on BINARY TREE SOLUTION")
     perform_frequency_analysis(rws)
 

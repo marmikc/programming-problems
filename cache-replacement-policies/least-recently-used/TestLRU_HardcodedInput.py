@@ -1,4 +1,4 @@
-import LRU_Cache as lru
+import LRU_Cache as LRU
 
 memory = {
     "Apple": 2,
@@ -8,7 +8,7 @@ memory = {
     "Kiwi": 4
 }
 
-cache = lru.LRU_Cache(memory, 3, True)
+cache = LRU.LRU_Cache(memory, 3, True)
 
 # Cache hit on a partially filled cache
 # Cache hit on head node

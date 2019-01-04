@@ -14,3 +14,6 @@ I received this problem as a question in a technical interview and floundered in
 
 ## random-weighted-shuffle
 This is a problem that has intruiged me for a while. Given a list of items with weights, how do you efficiently shuffle the list?
+
+## cache-replacement-policies
+When I took operating systems we learned about the least recently used (LRU) cache and the clock page replacement algorithms. I wanted to implement them and play around with them. This contians my implementation of both and test files that I wrote.

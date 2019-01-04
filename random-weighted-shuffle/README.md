@@ -58,7 +58,7 @@ Pea:
 ```
 $ python FrequencyAnalysis.py
 Testcase:  [('Apple', 2), ('Grape', 1), ('Pea', 1)]
-Performaing analysis on NAIVE SOLUTION
+Performing analysis on NAIVE SOLUTION
 Given:  ()  |  ('Pea', 1)  appears with prob  0.24995249952499524
 Given:  (('Pea', 1),)  |  ('Apple', 2)  appears with prob  0.6683336667333467
 Given:  ()  |  ('Apple', 2)  appears with prob  0.5003150031500315

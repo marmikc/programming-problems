@@ -49,7 +49,41 @@ Grape:
 Pea:
 - Pea has the same probabilites as Grape.
 
-`FrequencyAnalysis.py` tests both algorithms over 100,000 iterations and returns how often each item appears in every scenario.
+`FrequencyAnalysis.py` tests both algorithms over 100,000 iterations and returns how often each item appears in every scenario. 
+
+<details><summary>Frequency Analysis Output</summary>
+
+<p>
+
+```
+$ python FrequencyAnalysis.py
+Testcase:  [('Apple', 2), ('Grape', 1), ('Pea', 1)]
+Performaing analysis on NAIVE SOLUTION
+Given:  ()  |  ('Pea', 1)  appears with prob  0.24995249952499524
+Given:  (('Pea', 1),)  |  ('Apple', 2)  appears with prob  0.6683336667333467
+Given:  ()  |  ('Apple', 2)  appears with prob  0.5003150031500315
+Given:  (('Apple', 2),)  |  ('Grape', 1)  appears with prob  0.49943035318102774
+Given:  (('Apple', 2),)  |  ('Pea', 1)  appears with prob  0.500549659211289
+Given:  ()  |  ('Grape', 1)  appears with prob  0.24971249712497126
+Given:  (('Grape', 1),)  |  ('Apple', 2)  appears with prob  0.666292899763726
+Given:  (('Grape', 1),)  |  ('Pea', 1)  appears with prob  0.3336670537823876
+Given:  (('Pea', 1),)  |  ('Grape', 1)  appears with prob  0.33162632526505303
+
+Performing analysis on BINARY TREE SOLUTION
+Given:  ()  |  ('Apple', 2)  appears with prob  0.4983549835498355
+Given:  (('Apple', 2),)  |  ('Pea', 1)  appears with prob  0.49884619243503564
+Given:  ()  |  ('Grape', 1)  appears with prob  0.24977249772497725
+Given:  (('Grape', 1),)  |  ('Apple', 2)  appears with prob  0.6659326580454018
+Given:  (('Grape', 1),)  |  ('Pea', 1)  appears with prob  0.33402730512071105
+Given:  (('Apple', 2),)  |  ('Grape', 1)  appears with prob  0.5011337413464433
+Given:  ()  |  ('Pea', 1)  appears with prob  0.25185251852518525
+Given:  (('Pea', 1),)  |  ('Grape', 1)  appears with prob  0.32717887631526704
+Given:  (('Pea', 1),)  |  ('Apple', 2)  appears with prob  0.6727814175104229
+
+```
+
+</p>
+</details>
 
 ### Time Analysis
 
